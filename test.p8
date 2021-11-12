@@ -2,7 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 33
 __lua__
 -- game file
--- commit msg: test commit message
+-- cfdsfsdlkfjommit msg: test commit message
 i=0
 function _init()
   if stat(6) == "git" then
