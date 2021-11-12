@@ -11,7 +11,7 @@ function _init()
 end
 
 function _update()
-  -- what a comment
+  -- what a comment part 2
   i+=1
 end
 
