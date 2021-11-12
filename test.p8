@@ -2,7 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 33
 __lua__
 -- game file
-
+-- blahf
 i=0
 function _init()
   if stat(6) == "git" then
@@ -11,7 +11,7 @@ function _init()
 end
 
 function _update()
-  -- what a comment part 2
+  -- what a comment part 3
   i+=1
 end
 
