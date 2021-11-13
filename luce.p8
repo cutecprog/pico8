@@ -12,12 +12,13 @@ function _update()
   if (btn(⬇️)) p.y += 1
   if (btn(⬅️)) p.x -= 1
   if (btn(➡️)) p.x += 1
+  p.f = cycle_f(p.f, 1, 3)
 end
 
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
-  spr(1,p.x,p.y)
+  spr(p.f,p.x,p.y)
 end
 -->8
 -- util function
@@ -40,10 +41,14 @@ p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
 
-function cycle_f(sprite, f, l)
+function cycle_f(f, s, l)
   -- given list with x, y & f
-  -- first frame number,
+  -- start frame number,
   -- length of animation
+  f -= s
+  f = (f+1)%l
+  f += s
+  return f
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
