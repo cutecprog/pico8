@@ -39,6 +39,8 @@ function add_commit_message()
   end
 end
 -->8
+-- player code
+
 p = {}
 p.x = 0
 p.y = 0
