@@ -2,6 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 33
 __lua__
 -- game file
+-- blah
 i=0
 function _init()
   if stat(6) ~= "" then
