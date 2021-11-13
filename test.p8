@@ -5,6 +5,7 @@ __lua__
 -- blah
 i=0
 function _init()
+  -- saves message to a file
   add_commit_message()
 end
 
