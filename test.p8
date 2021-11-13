@@ -4,7 +4,10 @@ __lua__
 -- game file
 i=0
 function _init()
-  print(stat(6))
+  if stat(6) ~= "" then
+    print(stat(6))
+    run("")
+  end
   --load("test.p8")
 end
 
