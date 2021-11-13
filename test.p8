@@ -4,9 +4,7 @@ __lua__
 -- game file
 i=0
 function _init()
-  if stat(6) == "git" then
-    load("git", "back to cart")
-  end
+  print(stat(6))
 end
 
 function _update()
@@ -15,7 +13,7 @@ function _update()
 end
 
 function _draw()
-  print(i)
+  --print(i)
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
