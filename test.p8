@@ -5,12 +5,7 @@ __lua__
 -- blah
 i=0
 function _init()
-  if stat(6) ~= "~~~" then
-    ?"commit message set"
-    printh(stat(6), "msg", true)
-    sleep(1)
-    run("~~~")
-  end
+  add_commit_message()
 end
 
 function _update()
@@ -23,7 +18,16 @@ function _draw()
 end
 -->8
 -- util functions
-function sleep(s) for i=1, s*30 do flip() end
+
+function add_commit_message()
+  if stat(6) ~= "~~~" then
+    ?"commit message set"
+    printh(stat(6), "msg", true)
+    -- sleep 1 second
+    for i=1, 30 do flip() end
+    -- reset breadcrumb
+    run("~~~")
+  end
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
