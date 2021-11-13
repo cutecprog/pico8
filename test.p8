@@ -6,7 +6,7 @@ __lua__
 i=0
 function _init()
   if stat(6) ~= "~~~" then
-    ?stat(6)
+    ?"commit message set"
     printh(stat(6), "msg", true)
     run("~~~")
   end
