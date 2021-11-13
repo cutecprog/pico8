@@ -6,7 +6,7 @@ __lua__
 i=0
 function _init()
   if stat(6) ~= "~~~" then
-    print(stat(6))
+    ?stat(6)
     printh(stat(6), "msg", true)
     run("~~~")
   end
