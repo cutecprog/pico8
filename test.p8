@@ -5,9 +5,9 @@ __lua__
 -- blah
 i=0
 function _init()
-  if stat(6) ~= "" then
+  if stat(6) ~= "~~~" then
     print(stat(6))
-    run("")
+    run("~~~")
   end
   --load("test.p8")
 end
