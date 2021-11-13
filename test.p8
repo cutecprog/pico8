@@ -18,6 +18,7 @@ end
 -- util functions
 
 function add_commit_message()
+  -- check breadcrumb if reset
   if stat(6) ~= "~~~" then
     ?"commit message set"
     printh(stat(6), "msg", true)
