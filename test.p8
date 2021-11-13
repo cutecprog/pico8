@@ -8,9 +8,9 @@ function _init()
   if stat(6) ~= "~~~" then
     ?"commit message set"
     printh(stat(6), "msg", true)
+    sleep(1)
     run("~~~")
   end
-  --load("test.p8")
 end
 
 function _update()
@@ -19,7 +19,11 @@ function _update()
 end
 
 function _draw()
-  --print(i)
+  print(i)
+end
+-->8
+-- util functions
+function sleep(s) for i=1, s*30 do flip() end
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
