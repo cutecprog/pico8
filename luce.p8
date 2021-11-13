@@ -17,6 +17,7 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y, 0,0)
+  spr(1,p.x,p.y)
 end
 -->8
 -- util function
