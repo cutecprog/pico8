@@ -5,7 +5,7 @@ __lua__
 i=0
 function _init()
   print(stat(6))
-  load("test.p8")
+  --load("test.p8")
 end
 
 function _update()
