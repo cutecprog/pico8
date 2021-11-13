@@ -2,15 +2,12 @@ pico-8 cartridge // http://www.pico-8.com
 version 33
 __lua__
 -- game file
--- blah blah blah blah
 i=0
 function _init()
-  -- saves message to a file
   add_commit_message()
 end
 
 function _update()
-  -- what a comment part 3
   i+=1
 end
 
