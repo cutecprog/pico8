@@ -12,7 +12,10 @@ function _update()
   if (btn(⬇️)) p.y += 1
   if (btn(⬅️)) p.x -= 1
   if (btn(➡️)) p.x += 1
-  p.f = cycle_f(p.f, 1, 3)
+  if ticks%4 == 0 then
+    p.f = cycle_f(p.f, 1, 3)
+  end
+  ticks += 1
 end
 
 function _draw()
@@ -40,6 +43,7 @@ p = {}
 p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
+ticks = 0
 
 function cycle_f(f, s, l)
   -- given list with x, y & f
