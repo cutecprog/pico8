@@ -12,7 +12,8 @@ function _update()
 end
 
 function _draw()
-  print(p.x..p.y)
+  cls()
+  print(p.x..", "..p.y, 0,0)
 end
 -->8
 -- util function
