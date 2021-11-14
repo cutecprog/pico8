@@ -65,9 +65,9 @@ function move(self)
     p.f = cycle_f(p.f, 2, 2)
   end
   -- normalize
-  if rnd(1) > 0.707 and dy ~= 0
+  if ticks%4 == 0 and dy ~= 0
       and dx ~= 0 then
-    dy, dx = 0,0
+    dy, dx = 0, 0
   end
   self.y += dy
   self.x += dx
