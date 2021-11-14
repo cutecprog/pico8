@@ -15,6 +15,7 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
+  print(1%0.707)
   spr(p.f,p.x,p.y)
 end
 -->8
@@ -52,13 +53,16 @@ function cycle_f(f, s, l)
 end
 
 function move(self)
-  if (btn(⬆️)) self.y -= 1
-  if (btn(⬇️)) self.y += 1
-  if (btn(⬅️)) self.x -= 1
-  if (btn(➡️)) self.x += 1
+  local dy, dx = 0,0
+  if (btn(⬆️)) dy = -1
+  if (btn(⬇️)) dy = 1
+  if (btn(⬅️)) dx = -1
+  if (btn(➡️)) dx = 1
   if ticks%4 == 0 then
     p.f = cycle_f(p.f, 2, 2)
   end
+  self.y += dy
+  self.x += dx
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
