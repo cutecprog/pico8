@@ -15,7 +15,7 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
-  print(1%0.707)
+  print(rnd(0,8))
   spr(p.f,p.x,p.y)
 end
 -->8
