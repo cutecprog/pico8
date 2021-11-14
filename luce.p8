@@ -8,13 +8,7 @@ function _init()
 end
 
 function _update()
-  if (btn(⬆️)) p.y -= 1
-  if (btn(⬇️)) p.y += 1
-  if (btn(⬅️)) p.x -= 1
-  if (btn(➡️)) p.x += 1
-  if ticks%4 == 0 then
-    p.f = cycle_f(p.f, 1, 3)
-  end
+  move(p)
   ticks += 1
 end
 
@@ -55,6 +49,16 @@ function cycle_f(f, s, l)
   f = (f+1)%l
   f += s
   return f
+end
+
+function move(self)
+  if (btn(⬆️)) self.y -= 1
+  if (btn(⬇️)) self.y += 1
+  if (btn(⬅️)) self.x -= 1
+  if (btn(➡️)) self.x += 1
+  if ticks%4 == 0 then
+    p.f = cycle_f(p.f, 2, 2)
+  end
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
