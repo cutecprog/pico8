@@ -7,7 +7,7 @@ function _init()
   add_commit_message()
 end
 
-function _update()
+function _update60()
   move(p)
   ticks += 1
 end
@@ -61,11 +61,13 @@ function move(self)
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
-  elseif ticks%4 == 0 then
+  elseif ticks%8 == 0 then
     p.f = cycle_f(p.f, 2, 2)
   end
   -- normalize
-  if ticks%4 == 0 and dy ~= 0
+  if ticks%4 == 0
+      --and rnd(1) < 0.943 
+      and dy ~= 0
       and dx ~= 0 then
     dy, dx = 0, 0
   end
