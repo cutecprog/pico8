@@ -15,7 +15,7 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
-  print(rnd(0,8))
+  print(rnd(1))
   spr(p.f,p.x,p.y)
 end
 -->8
@@ -58,6 +58,9 @@ function move(self)
   if (btn(⬇️)) dy = 1
   if (btn(⬅️)) dx = -1
   if (btn(➡️)) dx = 1
+  if rnd(1) > 0.707 and dy ~= 0 and dx ~= 0 then
+    dy, dx = 0,0
+  end
   if ticks%4 == 0 then
     p.f = cycle_f(p.f, 2, 2)
   end
