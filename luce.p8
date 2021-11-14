@@ -58,11 +58,16 @@ function move(self)
   if (btn(⬇️)) dy = 1
   if (btn(⬅️)) dx = -1
   if (btn(➡️)) dx = 1
-  if rnd(1) > 0.707 and dy ~= 0 and dx ~= 0 then
-    dy, dx = 0,0
-  end
-  if ticks%4 == 0 then
+  -- select frame
+  if dy == 0 and dx == 0 then
+    p.f = 1
+  elseif ticks%4 == 0 then
     p.f = cycle_f(p.f, 2, 2)
+  end
+  -- normalize
+  if rnd(1) > 0.707 and dy ~= 0
+      and dx ~= 0 then
+    dy, dx = 0,0
   end
   self.y += dy
   self.x += dx
