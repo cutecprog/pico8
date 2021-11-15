@@ -13,6 +13,7 @@ function _update()
 end
 
 function _draw()
+  cls()
   print(i)
 end
 -->8
