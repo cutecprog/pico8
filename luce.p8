@@ -9,7 +9,7 @@ end
 
 function _update60()
   move(p)
-  move(g,1,1)
+  move_g(1,1)
   ticks += 1
 end
 
@@ -81,15 +81,15 @@ g.x = 20
 g.y = 20
 g.f = 64
 
-function move(self, dy, dx)
+function move_g(dy, dx)
   -- normalize
   if ticks*70%99 >= 70
       and dy ~= 0
       and dx ~= 0 then
     dy, dx = 0, 0
   end
-  self.y += dy
-  self.x += dx
+  g.y += dy
+  g.x += dx
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
