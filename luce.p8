@@ -85,7 +85,13 @@ g.f = 64
 
 function move_g()
   -- set to half speed
-  if (ticks%2 == 0) return
+  if abs(g.x-p.x) < 14
+      and abs(g.y-p.y) < 14
+      and ticks%4 ~= 0 then
+    flip()
+  elseif ticks%2 == 0 then
+    return
+  end
   local dy,dx
   if p.x > g.x then
     dx = 1
