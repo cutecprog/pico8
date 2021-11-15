@@ -13,12 +13,18 @@ end
 function _update()
   if (ticks%4~=0) i+=1
   j+=1
+  attempt = j/(sqrt(2)/2)%1
+  if attempt >= 0.99
+      or attempt <= .009 then
+    print(j)
+  end
   ticks+=1
 end
 
 function _draw()
-  cls()
-  print(i.."/"..j.."="..i/j)
+  --cls()
+  --print(j/.707%1)
+  --print(i.."/"..j.."="..i/j)
 end
 -->8
 -- util functions
