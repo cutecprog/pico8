@@ -5,26 +5,26 @@ __lua__
 -- blah blah
 i=0
 j=0
+avg=0
 ticks=0
 function _init()
   add_commit_message()
 end
 
 function _update()
-  if (ticks%4~=0) i+=1
+  if (ticks*70%99 < 70) i+=1
   j+=1
-  attempt = j/(sqrt(2)/2)%1
-  if attempt >= 0.99
-      or attempt <= .009 then
-    print(j)
-  end
   ticks+=1
 end
 
 function _draw()
   --cls()
   --print(j/.707%1)
-  --print(i.."/"..j.."="..i/j)
+  avg+=i/j
+  if ticks%100 == 0 then
+    cls()
+    print(avg/ticks)
+  end
 end
 -->8
 -- util functions
