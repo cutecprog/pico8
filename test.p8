@@ -12,7 +12,7 @@ function _init()
 end
 
 function _update60()
-  if (ticks*169%239 < 169) i+=1
+  if (ticks*70%99 < 70) i+=1
   j+=1
   ticks+=1
 end
