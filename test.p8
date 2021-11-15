@@ -11,20 +11,15 @@ function _init()
   add_commit_message()
 end
 
-function _update()
-  if (ticks*70%99 < 70) i+=1
+function _update60()
+  if (ticks*169%239 < 169) i+=1
   j+=1
   ticks+=1
 end
 
 function _draw()
   --cls()
-  --print(j/.707%1)
-  avg+=i/j
-  if ticks%100 == 0 then
-    cls()
-    print(avg/ticks)
-  end
+  print(i/j)
 end
 -->8
 -- util functions
