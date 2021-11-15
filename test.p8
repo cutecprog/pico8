@@ -4,19 +4,21 @@ __lua__
 -- game file
 -- blah blah
 i=0
+j=0
 ticks=0
 function _init()
   add_commit_message()
 end
 
 function _update()
-  if (ticks%2==0) i+=1
+  if (ticks%4~=0) i+=1
+  j+=1
   ticks+=1
 end
 
 function _draw()
   cls()
-  print(i)
+  print(i.."/"..j.."="..i/j)
 end
 -->8
 -- util functions
