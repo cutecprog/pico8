@@ -15,7 +15,6 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
-  print(rnd(1))
   spr(p.f,p.x,p.y)
 end
 -->8
@@ -65,7 +64,7 @@ function move(self)
     p.f = cycle_f(p.f, 2, 2)
   end
   -- normalize
-  if ticks%4 == 0
+  if ticks*70%99 >= 70
       --and rnd(1) < 0.943 
       and dy ~= 0
       and dx ~= 0 then
