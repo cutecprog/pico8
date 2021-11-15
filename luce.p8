@@ -7,10 +7,13 @@ function _init()
   add_commit_message()
 end
 
-function _update()
-  move(p)
-  move_g()
-  ticks += 1
+function _update60()
+  if ticks_60%2 == 0 then
+    move(p)
+    move_g()
+    ticks += 1
+  end
+  ticks_60+=1
 end
 
 function _draw()
@@ -44,6 +47,7 @@ p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
 ticks = 0
+ticks_60=0
 
 function cycle_f(f, s, l)
   -- given list with x, y & f
