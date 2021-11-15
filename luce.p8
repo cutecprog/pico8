@@ -9,7 +9,7 @@ end
 
 function _update60()
   move(p)
-  move_g(1,1)
+  move_g()
   ticks += 1
 end
 
@@ -81,7 +81,18 @@ g.x = 20
 g.y = 20
 g.f = 64
 
-function move_g(dy, dx)
+function move_g()
+  local dy,dx
+  if p.x > g.x then
+    dx = 1
+  else
+    dx = -1
+  end
+  if p.y > g.y then
+    dy = 1
+  else
+    dy = -1
+  end
   -- normalize
   if ticks*70%99 >= 70
       and dy ~= 0
