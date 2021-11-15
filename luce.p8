@@ -16,6 +16,8 @@ end
 function _draw()
   cls()
   print(p.x..", "..p.y..", "..p.f, 0,0)
+  print(g.x)
+  print(g.y)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1,true)
 end
@@ -83,24 +85,28 @@ g.f = 64
 
 function move_g()
   local dy,dx
+  --diff_y = abs(p.y - g.y)
+  --diff_x = abs(p.x - g.y)
   if p.x > g.x then
-    dx = 1
+    dx = .25
   elseif p.x == g.x then
     dx = 0
   else
-    dx = -1
+    dx = -.25
   end
   if p.y > g.y then
-    dy = 1
+    dy = .25
   elseif p.y == g.y then
     dy = 0
   else
-    dy = -1
+    dy = -.25
   end
   -- normalize
   if ticks*70%99 >= 70
       and dy ~= 0
       and dx ~= 0 then
+    --g.y = flr(g.y)
+    --g.x = flr(g.x)
     dy, dx = 0, 0
   end
   g.y += dy
