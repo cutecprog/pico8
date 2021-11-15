@@ -84,29 +84,27 @@ g.y = 20
 g.f = 64
 
 function move_g()
+  -- set to half speed
+  if (ticks%2 == 0) return
   local dy,dx
-  --diff_y = abs(p.y - g.y)
-  --diff_x = abs(p.x - g.y)
   if p.x > g.x then
-    dx = .25
+    dx = 1
   elseif p.x == g.x then
     dx = 0
   else
-    dx = -.25
+    dx = -1
   end
   if p.y > g.y then
-    dy = .25
+    dy = 1
   elseif p.y == g.y then
     dy = 0
   else
-    dy = -.25
+    dy = -1
   end
   -- normalize
   if ticks*70%99 >= 70
       and dy ~= 0
       and dx ~= 0 then
-    --g.y = flr(g.y)
-    --g.x = flr(g.x)
     dy, dx = 0, 0
   end
   g.y += dy
