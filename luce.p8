@@ -85,11 +85,15 @@ function move_g()
   local dy,dx
   if p.x > g.x then
     dx = 1
+  elseif p.x == g.x then
+    dx = 0
   else
     dx = -1
   end
   if p.y > g.y then
     dy = 1
+  elseif p.y == g.y then
+    dy = 0
   else
     dy = -1
   end
