@@ -4,12 +4,14 @@ __lua__
 -- game file
 -- blah blah
 i=0
+ticks=0
 function _init()
   add_commit_message()
 end
 
 function _update()
-  i+=1
+  if (ticks%2==0) i+=1
+  ticks+=1
 end
 
 function _draw()
