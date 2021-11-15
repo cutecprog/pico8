@@ -7,7 +7,7 @@ function _init()
   add_commit_message()
 end
 
-function _update60()
+function _update()
   move(p)
   move_g()
   ticks += 1
@@ -84,6 +84,19 @@ g.y = 20
 g.f = 64
 
 function move_g()
+  if ticks%32 < 8 then
+    g.y += 1
+    g.x += -1
+  elseif ticks%32 < 16 then
+    g.y += -1
+    g.x += -1
+  elseif ticks%32 < 24 then
+    g.y += -1
+    g.x += 1
+  else
+    g.y += 1
+    g.x += 1
+  end
   -- set to half speed
   if (ticks%2 == 0) return
   local dy,dx
@@ -107,8 +120,8 @@ function move_g()
       and dx ~= 0 then
     dy, dx = 0, 0
   end
-  g.y += dy + flr(rnd(3)-1)
-  g.x += dx + flr(rnd(3)-1)
+  g.y += dy
+  g.x += dx
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
