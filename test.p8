@@ -10,7 +10,8 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  print_args(1,2,3)
+  args = {1,2,3}
+  print_args(unpack(args))
 end
 
 function _update60()
