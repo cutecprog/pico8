@@ -9,17 +9,19 @@ avg=0
 ticks=0
 function _init()
   add_commit_message()
+  cls()
+  print_args(1,2,3)
 end
 
 function _update60()
-  if (ticks*70%99 < 70) i+=1
-  j+=1
+  --if (ticks*70%99 < 70) i+=1
+  --j+=1
   ticks+=1
 end
 
 function _draw()
   --cls()
-  print(i/j)
+  --print(i/j)
 end
 -->8
 -- util functions
@@ -35,6 +37,12 @@ function add_commit_message()
     -- reset breadcrumb
     run("~~~")
   end
+end
+-->8
+function print_args(a,b,c)
+  print(a)
+  print(b)
+  print(c)
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
