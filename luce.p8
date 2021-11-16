@@ -68,7 +68,7 @@ function move(self)
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
-  elseif ticks%8 == 0 then
+  elseif ticks%4 == 0 then
     p.f = cycle_f(p.f, 2, 2)
   end
   -- normalize
