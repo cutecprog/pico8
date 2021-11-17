@@ -4,6 +4,8 @@ __lua__
 -- set commit message for git
 -- via external file
 function _init()
+  ?stat(6)
+  ?stat(100)
   add_commit_message()
 end
 
