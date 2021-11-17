@@ -32,7 +32,6 @@ function add_commit_message()
   -- call in _init()
   if stat(6) ~= "~~~" 
       and stat(6) ~= "" then
-    ?stat(6)
     ?"commit message set"
     printh(stat(6), "msg", true)
     -- sleep 1 second
