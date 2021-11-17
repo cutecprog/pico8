@@ -30,7 +30,8 @@ end
 function add_commit_message()
   -- check breadcrumb if reset
   -- call in _init()
-  if stat(6) ~= "~~~" then
+  if stat(6) ~= "~~~" 
+      and stat(6) ~= nil then
     ?"commit message set"
     printh(stat(6), "msg", true)
     -- sleep 1 second
