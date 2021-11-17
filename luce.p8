@@ -31,10 +31,12 @@ end
 -- write stat(6) to file to use
 -- as git commit message
 function add_commit_message()
+  -- this saves a token xd
+  local msg = stat(6)
   -- check if message entered
-  if stat(6) ~= "~~~" 
-      and stat(6) ~= "" then
-    printh(stat(6), "msg", true)
+  if msg ~= "~~~" 
+      and msg ~= "" then
+    printh(msg, "msg", true)
     ?"commit message set"
     -- sleep 1 second
     for i=1, 30 do flip() end
