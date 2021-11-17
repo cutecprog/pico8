@@ -31,15 +31,16 @@ end
 -- write stat(6) to file to use
 -- as git commit message
 function add_commit_message()
-  -- this saves a token xd
+  -- this saves 1 token
   local msg = stat(6)
   -- check if message entered
   if msg ~= "~~~" 
       and msg ~= "" then
+    -- write message to file
     printh(msg, "msg", true)
     ?"commit message set"
-    -- sleep 1 second
-    for i=1, 30 do flip() end
+    -- sleep for 30 frames
+    --for i=1, 30 do flip() end
     -- reset breadcrumb
     run("~~~")
   end
