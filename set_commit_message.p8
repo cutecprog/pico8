@@ -3,7 +3,33 @@ version 33
 __lua__
 -- set commit message for git
 -- via external file
+function _init()
+  add_commit_message()
+end
 
+-->8
+-- > run breadcrumb text
+-- write stat(6) to file to use
+-- as git commit message
+function add_commit_message()
+  -- check if message entered
+  if stat(6) ~= "~~~" 
+      and stat(6) ~= "" then
+    printh(stat(6), "msg", true)
+    ?"commit message set"
+    -- sleep 1 second
+    for i=1, 30 do flip() end
+    -- reset breadcrumb
+    run("~~~")
+  end
+end
+-- further explaination:
+-- stat(6) = breadcrumb text
+-- if stat(6) == "" then
+--   stat(6) hasn't been set
+-- after stat(6) is set then
+-- it can't go back to ""
+-- so stat(6) is set t0 "~~~"
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
