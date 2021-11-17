@@ -36,11 +36,12 @@ function add_commit_message()
   -- check if message entered
   if msg ~= "~~~" 
       and msg ~= "" then
-    ?"commit message set"
     -- write message to file
     printh(msg, "msg", true)
+    -- report success (opt)
+    ?"commit message set"
     -- sleep for 30 frames (opt)
-    -- for i=1, 30 do flip() end
+    for i=1, 30 do flip() end
     -- reset breadcrumb
     run("~~~")
   end
