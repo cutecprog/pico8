@@ -36,7 +36,6 @@ function _draw()
   print(p.x..", "..p.y..", "..p.f, 0,0)
   print(g.x)
   print(g.y)
-  --tprint(g.mask)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1,true)
 end
@@ -69,19 +68,6 @@ end
 -- after stat(6) is set then
 -- it can't go back to ""
 -- so stat(6) is set t0 "~~~"
-
-function tprint (tbl, indent)
-  if not indent then indent = 0 end
-  for k, v in pairs(tbl) do
-    --formatting = string.rep("  ", indent) .. k .. ": "
-    if type(v) == "table" then
-      --print(formatting)
-      tprint(v, indent+1)
-    else
-      print(v)
-    end
-  end
-end
 -->8
 -- player code
 
