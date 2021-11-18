@@ -39,7 +39,7 @@ function _draw()
   print(p.x..", "..p.y..", "..p.f)
   print(g.x..", "..g.y)
   spr(p.f,p.x,p.y)
-  spr(g.f,g.x,g.y,1,1,true)
+  spr(g.f,g.x,g.y,1,1)
 end
 -->8
 -- util function
@@ -139,7 +139,7 @@ end
 g = {}
 g.x = 20
 g.y = 20
-g.f = 64
+g.f = 4
 g.w = 8
 g.h = 8
 g.mask = {}
