@@ -9,7 +9,7 @@ end
 
 function _update60()
   if ticks_60%2 == 0 then
-    move(p)
+    move_p()
     move_g()
     ticks += 1
   end
@@ -73,7 +73,7 @@ function cycle_f(f, s, l)
   return f
 end
 
-function move(self)
+function move_p()
   local dy, dx = 0,0
   if (btn(⬆️)) dy = -1
   if (btn(⬇️)) dy = 1
@@ -91,8 +91,8 @@ function move(self)
       and dx ~= 0 then
     dy, dx = 0, 0
   end
-  self.y += dy
-  self.x += dx
+  p.y += dy
+  p.x += dx
 end
 -->8
 -- npc code
@@ -142,7 +142,8 @@ function move_g()
   g.x += dx
 end
 -->8
--- 
+-- scheduler?
+func_list = {move_p,move_g}
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000044444400444444004444440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
