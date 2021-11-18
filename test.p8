@@ -10,8 +10,12 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  args = {flip,1,2,3}
-  print_args(unpack(args,2))
+  fps = bunpack(5,3)
+  for v in all(fps) do
+    print(v)
+  end
+  --args = {flip,1,2,3}
+  --print_args(unpack(args,2))
 end
 
 function _update60()
@@ -44,6 +48,21 @@ function print_args(a,b,c)
   print(a)
   print(b)
   print(c)
+end
+-->8
+-- bitfield unpack
+
+function bunpack(bitfield,l)
+  blist = {}
+  for i=1, l do
+    if bitfield%2 == 0 then
+      blist[i] = false
+    else
+      blist[i] = true
+    end
+    bitfield = flr(bitfield>>1)
+  end
+  return blist
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
