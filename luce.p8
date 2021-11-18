@@ -5,6 +5,7 @@ __lua__
 
 function _init()
   add_commit_message()
+  --p.mask = 
 end
 
 function _update60()
@@ -62,6 +63,8 @@ p = {}
 p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
+p.w = 8
+p.h = 8
 
 function check_xo()
   if btn(❎) then
@@ -110,6 +113,8 @@ g = {}
 g.x = 20
 g.y = 20
 g.f = 64
+g.w = 8
+g.h = 8
 
 function move_g(ticks)
   if ticks%32 < 8 then
