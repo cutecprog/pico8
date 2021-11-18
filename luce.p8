@@ -89,9 +89,15 @@ p.mask = {}
 
 function check_xo()
   if btn(❎) then
+    fps15[1] = false
     fps30[1] = false
     fps60[1] = true
+  elseif btn(🅾️) then
+    fps15[1] = true
+    fps30[1] = false
+    fps60[1] = false
   else
+    fps15[1] = false
     fps30[1] = true
     fps60[1] = false
   end
