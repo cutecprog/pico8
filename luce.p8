@@ -9,10 +9,12 @@ end
 
 function _update60()
   if ticks_60%2 == 0 then
-    move_p()
-    move_g()
+    update(fps30)
+    --move_p()
+    --move_g()
     ticks += 1
   end
+  update(fps60)
   ticks_60+=1
 end
 
@@ -144,6 +146,14 @@ end
 -->8
 -- scheduler?
 func_list = {move_p,move_g}
+fps30 = {true,true}
+fps60 = {false,false}
+
+function update(fps)
+  for i=1, #func_list do
+    if (fps[i]) func_list[i]()
+  end
+end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000044444400444444004444440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
