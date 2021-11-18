@@ -27,7 +27,7 @@ function _draw()
   spr(g.f,g.x,g.y,1,1,true)
 end
 -->8
--- util function and others code
+-- util function
 
 -- > run breadcrumb text
 -- write stat(6) to file to use
@@ -55,48 +55,6 @@ end
 -- after stat(6) is set then
 -- it can't go back to ""
 -- so stat(6) is set t0 "~~~"
-
---------------------------------
-
--- freds72 per-pixel api
-function make_bitmask(sx,sy,sw,sh,tc)
-	assert(flr(sw/32)<=1,"32+pixels wide sprites not yet supported")
-	tc=tc or 0
-	local bitmask={}
-	for j=0,sh-1 do
-  local bits,mask=0,0x1000.0000
-  for i=0,sw-1 do
-		 local c=sget(sx+i,sy+j)
-   if(c!=tc) bits=bor(bits,lshr(mask,i))  
-  end
-  bitmask[j]=bits
- end
- return bitmask
-end
-
-function intersect_bitmasks(a,b,x,ymin,ymax)
-	local by=flr(a.y)-flr(b.y)
-	for y=ymin,ymax do
-	 -- out of boud b mask returns nil
-	 -- nil is evaluated as zero :]
-		if(band(a.mask[y],lshr(b.mask[by+y],x))!=0) return true		
-	end
-end
-
-function collide_aabox(a,b)
-	-- a is left most
-	if(a.x>b.x) a,b=b,a
-	-- screen coords
-	local ax,ay,bx,by=flr(a.x),flr(a.y),flr(b.x),flr(b.y)
-	local xmax,ymax=bx+b.w,by+b.h
-	if ax<xmax and 
-	 ax+a.w>bx and
-	 ay<ymax and
-	 ay+a.w>by then
-	 -- collision coords in a space
- 	return true,a,b,bx-ax,max(by-ay),min(by+b.h,ay+a.h)-ay
-	end
-end
 -->8
 -- player code
 
@@ -205,6 +163,46 @@ function update(fps, ticks)
   for i=1, #func_list do
     if (fps[i]) func_list[i](ticks)
   end
+end
+-->8
+-- freds72 per-pixel api
+function make_bitmask(sx,sy,sw,sh,tc)
+	assert(flr(sw/32)<=1,"32+pixels wide sprites not yet supported")
+	tc=tc or 0
+	local bitmask={}
+	for j=0,sh-1 do
+  local bits,mask=0,0x1000.0000
+  for i=0,sw-1 do
+		 local c=sget(sx+i,sy+j)
+   if(c!=tc) bits=bor(bits,lshr(mask,i))  
+  end
+  bitmask[j]=bits
+ end
+ return bitmask
+end
+
+function intersect_bitmasks(a,b,x,ymin,ymax)
+	local by=flr(a.y)-flr(b.y)
+	for y=ymin,ymax do
+	 -- out of boud b mask returns nil
+	 -- nil is evaluated as zero :]
+		if(band(a.mask[y],lshr(b.mask[by+y],x))!=0) return true		
+	end
+end
+
+function collide_aabox(a,b)
+	-- a is left most
+	if(a.x>b.x) a,b=b,a
+	-- screen coords
+	local ax,ay,bx,by=flr(a.x),flr(a.y),flr(b.x),flr(b.y)
+	local xmax,ymax=bx+b.w,by+b.h
+	if ax<xmax and 
+	 ax+a.w>bx and
+	 ay<ymax and
+	 ay+a.w>by then
+	 -- collision coords in a space
+ 	return true,a,b,bx-ax,max(by-ay),min(by+b.h,ay+a.h)-ay
+	end
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
