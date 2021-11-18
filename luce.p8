@@ -19,6 +19,7 @@ function _update60()
     ticks_30 += 1
   end
   update(fps60, ticks_60)
+  
   ticks_60+=1
 end
 
