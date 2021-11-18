@@ -52,16 +52,16 @@ end
 -->8
 -- bitfield unpack
 
--- 36 tokens
+-- 33 tokens
 function bunpack(bitfield)
   local blist = {}
   while bitfield ~= 0 do
     -- add bit to blist table
     -- if bf%2==1 then true
     -- else false
-    blist[#blist+1] = 
+    add(blist, 
       bitfield%2==1 
-        and true or false
+        and true or false)
     -- shift to see next bit
     bitfield = flr(bitfield>>1)
   end
