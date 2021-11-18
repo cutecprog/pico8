@@ -63,6 +63,16 @@ p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
 
+function check_xo()
+  if btn(❎) then
+    fps30[1] = false
+    fps60[1] = true
+  else
+    fps30[1] = true
+    fps60[1] = false
+  end
+end
+
 function cycle_f(f, s, l)
   -- given list with x, y & f
   -- start frame number,
@@ -143,9 +153,9 @@ function move_g(ticks)
 end
 -->8
 -- scheduler?
-func_list = {move_p,move_g}
-fps30 = {false,true}
-fps60 = {true,false}
+func_list = {move_p,move_g,check_xo}
+fps30 = {true,true, false}
+fps60 = {false,false,true}
 ticks_30 = 0
 ticks_60=0
 
