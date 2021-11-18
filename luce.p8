@@ -5,7 +5,10 @@ __lua__
 
 function _init()
   add_commit_message()
-  --p.mask = 
+  p.mask = make_bitmask(8,0,
+                     p.w,p.h)
+  g.mask = make_bitmask(0,512,
+                     g.w,g.h)
 end
 
 function _update60()
