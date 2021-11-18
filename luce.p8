@@ -12,10 +12,12 @@ function _init()
 end
 
 function _update60()
+  if ticks_60%4 == 0 then
+    update(fps15, ticks_15)
+    ticks_15 += 1
+  end
   if ticks_60%2 == 0 then
     update(fps30, ticks_30)
-    --move_p()
-    --move_g()
     ticks_30 += 1
   end
   update(fps60, ticks_60)
@@ -181,9 +183,11 @@ end
 -->8
 -- scheduler?
 func_list = {move_p,move_g,check_xo}
+fps15 = {false,false,false}
 fps30 = {true,false, false}
 fps60 = {false,false,true}
-ticks_30 = 0
+ticks_15=0
+ticks_30=0
 ticks_60=0
 
 function update(fps, ticks)
