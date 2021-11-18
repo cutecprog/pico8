@@ -181,7 +181,7 @@ end
 -->8
 -- scheduler?
 func_list = {move_p,move_g,check_xo}
-fps30 = {true,true, false}
+fps30 = {true,false, false}
 fps60 = {false,false,true}
 ticks_30 = 0
 ticks_60=0
