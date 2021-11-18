@@ -33,9 +33,9 @@ end
 
 function _draw()
   cls()
-  print(p.x..", "..p.y..", "..p.f, 0,0)
-  print(g.x)
-  print(g.y)
+  print(round(stat(1)*100).."%")
+  print(p.x..", "..p.y..", "..p.f)
+  print(g.x..", "..g.y)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1,true)
 end
@@ -68,6 +68,14 @@ end
 -- after stat(6) is set then
 -- it can't go back to ""
 -- so stat(6) is set t0 "~~~"
+
+function round(n)
+  if n%1 >= .5 then
+    return ceil(n)
+  else
+    return flr(n)
+  end
+end
 -->8
 -- player code
 
