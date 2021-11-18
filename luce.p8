@@ -72,11 +72,9 @@ end
 -- so stat(6) is set t0 "~~~"
 
 function round(n)
-  if n%1 >= .5 then
-    return ceil(n)
-  else
-    return flr(n)
-  end
+  return (n%1 >= .5) 
+           and ceil(n)
+           or flr(n)
 end
 -->8
 -- player code
