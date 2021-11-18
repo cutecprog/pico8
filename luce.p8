@@ -9,12 +9,12 @@ end
 
 function _update60()
   if ticks_60%2 == 0 then
-    update(fps30)
+    update(fps30, ticks_30)
     --move_p()
     --move_g()
-    ticks += 1
+    ticks_30 += 1
   end
-  update(fps60)
+  update(fps60, ticks_60)
   ticks_60+=1
 end
 
@@ -62,8 +62,6 @@ p = {}
 p.x = 0
 p.y = 0
 p.f = 1 -- draw frame for p
-ticks = 0
-ticks_60=0
 
 function cycle_f(f, s, l)
   -- given list with x, y & f
@@ -75,7 +73,7 @@ function cycle_f(f, s, l)
   return f
 end
 
-function move_p()
+function move_p(ticks)
   local dy, dx = 0,0
   if (btn(⬆️)) dy = -1
   if (btn(⬇️)) dy = 1
@@ -103,7 +101,7 @@ g.x = 20
 g.y = 20
 g.f = 64
 
-function move_g()
+function move_g(ticks)
   if ticks%32 < 8 then
     g.y += 1
     g.x += -1
@@ -146,12 +144,14 @@ end
 -->8
 -- scheduler?
 func_list = {move_p,move_g}
-fps30 = {true,true}
-fps60 = {false,false}
+fps30 = {false,true}
+fps60 = {true,false}
+ticks_30 = 0
+ticks_60=0
 
-function update(fps)
+function update(fps, ticks)
   for i=1, #func_list do
-    if (fps[i]) func_list[i]()
+    if (fps[i]) func_list[i](ticks)
   end
 end
 __gfx__
