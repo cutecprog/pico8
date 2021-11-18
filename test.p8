@@ -10,7 +10,7 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  fps = bunpack(19,5)
+  fps = bunpack(19)
   for v in all(fps) do
     print(v)
   end
@@ -52,13 +52,17 @@ end
 -->8
 -- bitfield unpack
 
-function bunpack(bitfield,l)
+-- 36 tokens
+function bunpack(bitfield)
   local blist = {}
-  for i=1, l do
+  while bitfield ~= 0 do
+    -- add bit to blist table
     -- if bf%2==1 then true
     -- else false
-    blist[i] = bitfield%2==1 
+    blist[#blist+1] = 
+      bitfield%2==1 
         and true or false
+    -- shift to see next bit
     bitfield = flr(bitfield>>1)
   end
   return blist
