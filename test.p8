@@ -59,8 +59,7 @@ function bunpack(bitfield)
     -- add bit to blist table
     -- if bf%2==1 then true
     -- else false
-    add(blist, 
-      bitfield%2==1 
+    add(blist, bitfield%2==1 
         and true or false)
     -- shift to see next bit
     bitfield = flr(bitfield>>1)
