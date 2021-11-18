@@ -10,7 +10,7 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  fps = bunpack(5,3)
+  fps = bunpack(19,5)
   for v in all(fps) do
     print(v)
   end
@@ -53,13 +53,12 @@ end
 -- bitfield unpack
 
 function bunpack(bitfield,l)
-  blist = {}
+  local blist = {}
   for i=1, l do
-    if bitfield%2 == 0 then
-      blist[i] = false
-    else
-      blist[i] = true
-    end
+    -- if bf%2==1 then true
+    -- else false
+    blist[i] = bitfield%2==1 
+        and true or false
     bitfield = flr(bitfield>>1)
   end
   return blist
