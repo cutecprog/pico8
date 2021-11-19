@@ -36,6 +36,11 @@ end
 -->8
 -- util function
 
+-- limit n to range -1 to 1
+function limit(n)
+  return (n>1) and 1 or (n<-1) and -1 or n
+end
+
 -- > run breadcrumb text
 -- write stat(6) to file to use
 -- as git commit message
@@ -155,8 +160,6 @@ function move_g(ticks)
     _dy = 1
     _dx = 1
   end
-  g.y += _dy
-  g.x += _dx
   -- set to half speed
   if (ticks%2 ~= 0) then
     if p.x > g.x then
@@ -180,11 +183,13 @@ function move_g(ticks)
       dy, dx = 0, 0
     end
   end
+  dy = limit(dy+_dy)
+  dx = limit(dx+_dx)
   g.y += dy
   g.x += dx
   if (collide_pp(p,g)) then
-    g.y -= (dy+_dy) 
-    g.x -= (dx+_dx)
+    g.y -= dy 
+    g.x -= dx
   end
 end
 -->8
