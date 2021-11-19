@@ -27,11 +27,14 @@ end
 
 function _draw()
   cls()
-  print(round(stat(1)*100).."%")
-  print(p.x..", "..p.y..", "..p.f)
-  print(g.x..", "..g.y)
+  --for i=0,100 do
+    --print(i,20,20)
+  --end
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
+  print(round(stat(1)*100).."%",0,0)
+  --print(p.x..", "..p.y..", "..p.f)
+  --print(g.x..", "..g.y)
 end
 -->8
 -- util function
