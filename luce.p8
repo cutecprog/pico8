@@ -21,15 +21,7 @@ function _update60()
     ticks_30 += 1
   end
   update(fps60, ticks_60)
-  -- aabox collision
-		local col,a,b,x0,y0,y1=
-		   collide_aabox(p,g)
-		--if (col) sfx(0)
-		-- per-pixel collision
-		if col and intersect_bitmasks(
-		    a,b,x0,y0,y1) then
-		  sfx(0)
-		end	
+  if (collide_pp(p,g)) sfx(0)
   ticks_60+=1
 end
 
@@ -133,6 +125,10 @@ function move_p(ticks)
   end
   p.y += dy
   p.x += dx
+  if (collide_pp(p,g)) then
+    p.y -= dy
+    p.x -= dx
+  end
 end
 -->8
 -- npc code
@@ -145,44 +141,51 @@ g.h = 8
 g.mask = {}
 
 function move_g(ticks)
+  local _dy,_dx,dy,dx=0,0,0,0
   if ticks%32 < 8 then
-    g.y += 1
-    g.x += -1
+    _dy = 1
+    _dx = -1
   elseif ticks%32 < 16 then
-    g.y += -1
-    g.x += -1
+    _dy = -1
+    _dx = -1
   elseif ticks%32 < 24 then
-    g.y += -1
-    g.x += 1
+    _dy = -1
+    _dx = 1
   else
-    g.y += 1
-    g.x += 1
+    _dy = 1
+    _dx = 1
   end
+  g.y += _dy
+  g.x += _dx
   -- set to half speed
-  if (ticks%2 == 0) return
-  local dy,dx
-  if p.x > g.x then
-    dx = 1
-  elseif p.x == g.x then
-    dx = 0
-  else
-    dx = -1
-  end
-  if p.y > g.y then
-    dy = 1
-  elseif p.y == g.y then
-    dy = 0
-  else
-    dy = -1
-  end
-  -- normalize
-  if ticks*70%99 >= 70
-      and dy ~= 0
-      and dx ~= 0 then
-    dy, dx = 0, 0
+  if (ticks%2 ~= 0) then
+    if p.x > g.x then
+      dx = 1
+    elseif p.x == g.x then
+      dx = 0
+    else
+      dx = -1
+    end
+    if p.y > g.y then
+      dy = 1
+    elseif p.y == g.y then
+      dy = 0
+    else
+      dy = -1
+    end
+    -- normalize
+    if ticks*70%99 >= 70
+        and dy ~= 0
+        and dx ~= 0 then
+      dy, dx = 0, 0
+    end
   end
   g.y += dy
   g.x += dx
+  if (collide_pp(p,g)) then
+    g.y -= (dy+_dy) 
+    g.x -= (dx+_dx)
+  end
 end
 -->8
 -- scheduler?
@@ -238,6 +241,20 @@ function collide_aabox(a,b)
 	 -- collision coords in a space
  	return true,a,b,bx-ax,max(by-ay),min(by+b.h,ay+a.h)-ay
 	end
+end
+-->8
+-- additional collision code
+function collide_pp(a,b)
+  -- aabox collision
+		local col,a,b,x0,y0,y1=
+		   collide_aabox(p,g)
+		--if (col) sfx(0)
+		-- per-pixel collision
+		if col and intersect_bitmasks(
+		    a,b,x0,y0,y1) then
+		  return true
+		end	
+		return false
 end
 __gfx__
 00000000000000000000000000000000077777700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
