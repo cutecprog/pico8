@@ -30,6 +30,7 @@ function _draw()
   --for i=0,100 do
     --print(i,20,20)
   --end
+  map(0,0,0,0,8,8)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
   print(round(stat(1)*100).."%",0,0)
