@@ -166,20 +166,12 @@ function move_g(ticks)
   end
   -- set to half speed
   if (ticks%2 ~= 0) then
-    if p.x > g.x then
-      dx = 1
-    elseif p.x == g.x then
-      dx = 0
-    else
-      dx = -1
-    end
-    if p.y > g.y then
-      dy = 1
-    elseif p.y == g.y then
-      dy = 0
-    else
-      dy = -1
-    end
+    dy = (p.y > g.y) and 1 
+         or (p.y==g.y) and 0 
+         or -1
+    dx = (p.x > g.x) and 1 
+         or (p.x==g.x) and 0 
+         or -1
     -- normalize
     if ticks*70%99 >= 70
         and dy ~= 0
