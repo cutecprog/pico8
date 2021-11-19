@@ -40,6 +40,13 @@ end
 -->8
 -- util function
 
+-- helps b approach a in 1d
+function approach(a,b)
+  return (a > b) and 1 
+         or (a==b) and 0 
+         or -1
+end
+
 -- limit n to range -1 to 1
 function limit(n)
   return (n>1) and 1 or (n<-1) and -1 or n
@@ -166,12 +173,8 @@ function move_g(ticks)
   end
   -- set to half speed
   if (ticks%2 ~= 0) then
-    dy = (p.y > g.y) and 1 
-         or (p.y==g.y) and 0 
-         or -1
-    dx = (p.x > g.x) and 1 
-         or (p.x==g.x) and 0 
-         or -1
+    dy = approach(p.y, g.y) 
+    dx = approach(p.x, g.x)
     -- normalize
     if ticks*70%99 >= 70
         and dy ~= 0
