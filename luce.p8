@@ -157,24 +157,24 @@ g.h = 8
 g.mask = {}
 
 function move_g(ticks)
-  local _dy,_dx,dy,dx=0,0,0,0
+  local dy,dx=0,0
   if ticks%32 < 8 then
-    _dy = 1
-    _dx = -1
+    dy = 1
+    dx = -1
   elseif ticks%32 < 16 then
-    _dy = -1
-    _dx = -1
+    dy = -1
+    dx = -1
   elseif ticks%32 < 24 then
-    _dy = -1
-    _dx = 1
+    dy = -1
+    dx = 1
   else
-    _dy = 1
-    _dx = 1
+    dy = 1
+    dx = 1
   end
   -- set to half speed
   if (ticks%2 ~= 0) then
-    dy = approach(p.y, g.y) 
-    dx = approach(p.x, g.x)
+    dy += approach(p.y, g.y) 
+    dx += approach(p.x, g.x)
     -- normalize
     if ticks*70%99 >= 70
         and dy ~= 0
@@ -182,11 +182,11 @@ function move_g(ticks)
       dy, dx = 0, 0
     end
   end
-  dy = limit(dy+_dy)
-  dx = limit(dx+_dx)
+  dy = limit(dy)
+  dx = limit(dx)
   g.y += dy
   g.x += dx
-  if (collide_pp(p,g)) then
+  if collide_pp(p,g) then
     g.y -= dy 
     g.x -= dx
   end
