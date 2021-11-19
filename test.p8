@@ -10,10 +10,14 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  fps = bunpack(19)
-  for v in all(fps) do
-    print(v)
-  end
+  a,b,c = 2, .5, -2
+  print(limit(a))
+  print(limit(b))
+  print(limit(c))
+  --fps = bunpack(19)
+  --for v in all(fps) do
+  --  print(v)
+  --end
   --args = {flip,1,2,3}
   --print_args(unpack(args,2))
 end
@@ -44,10 +48,8 @@ function add_commit_message()
   end
 end
 -->8
-function print_args(a,b,c)
-  print(a)
-  print(b)
-  print(c)
+function limit(n)
+  return (n>1) and 1 or (n<-1) and -1 or n
 end
 -->8
 -- bitfield unpack
