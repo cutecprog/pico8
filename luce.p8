@@ -33,9 +33,6 @@ function _draw()
   map(0,0,0,0,8,8)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
-  if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
-  print(g.dy.." "
-        ..g.dx,0,8)
   print(round(stat(1)*100).."%",0,0)
   --print(p.x..", "..p.y..", "..p.f)
   --print(g.x..", "..g.y)
@@ -163,21 +160,22 @@ g.mask = {}
 
 function move_g(ticks)
   --g.dy,g.dx=0,0
---  if ticks%32 < 8 then
---    g.dy += 1
---    g.dx += -1
---  elseif ticks%32 < 16 then
---    g.dy += -1
---    g.dx += -1
---  elseif ticks%32 < 24 then
---    g.dy += -1
---    g.dx += 1
---  else
---    g.dy += 1
---    g.dx += 1
---  end
-  g.dy = 3--limit(g.dy)
-  g.dx = 3--limit(g.dx)
+  if ticks%32 < 8 then
+    g.dy += 1
+    g.dx += -1
+  elseif ticks%32 < 16 then
+    g.dy += -1
+    g.dx += -1
+  elseif ticks%32 < 24 then
+    g.dy += -1
+    g.dx += 1
+  else
+    g.dy += 1
+    g.dx += 1
+  end
+  g.dy = limit(g.dy)
+  g.dx = limit(g.dx)
+  if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
   g.y += g.dy
   g.x += g.dx
   if collide_pp(p,g) then
@@ -203,9 +201,9 @@ end
 func_list = 
     {move_p,check_xo,
      g_approach,move_g}
-fps15 = {false,false,false,false}
+fps15 = {false,false,true,false}
 fps30 = {true,false,false,true}
-fps60 = {false,true,true,false}
+fps60 = {false,true,false,false}
 ticks_15=0
 ticks_30=0
 ticks_60=0
