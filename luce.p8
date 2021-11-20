@@ -154,47 +154,49 @@ g.y = 20
 g.f = 4
 g.w = 8
 g.h = 8
+g.dy = 0
+g.dx = 0
 g.mask = {}
 
 function move_g(ticks)
-  local dy,dx=0,0
+  g.dy,g.dx=0,0
   if ticks%32 < 8 then
-    dy = 1
-    dx = -1
+    g.dy = 1
+    g.dx = -1
   elseif ticks%32 < 16 then
-    dy = -1
-    dx = -1
+    g.dy = -1
+    g.dx = -1
   elseif ticks%32 < 24 then
-    dy = -1
-    dx = 1
+    g.dy = -1
+    g.dx = 1
   else
-    dy = 1
-    dx = 1
+    g.dy = 1
+    g.dx = 1
   end
   -- set to half speed
   if (ticks%2 ~= 0) then
-    dy, dx = g_approach(dy,dx,ticks)
+    g.dy, g.dx = g_approach(ticks)
   end
-  dy = limit(dy)
-  dx = limit(dx)
-  g.y += dy
-  g.x += dx
+  g.dy = limit(g.dy)
+  g.dx = limit(g.dx)
+  g.y += g.dy
+  g.x += g.dx
   if collide_pp(p,g) then
-    g.y -= dy 
-    g.x -= dx
+    g.y -= g.dy 
+    g.x -= g.dx
   end
 end
 
-function g_approach(dy,dx,ticks)
-  dy += approach(p.y, g.y) 
-  dx += approach(p.x, g.x)
+function g_approach(ticks)
+  g.dy += approach(p.y, g.y) 
+  g.dx += approach(p.x, g.x)
   -- normalize
   if ticks*70%99 >= 70
-      and dy ~= 0
-      and dx ~= 0 then
-    dy, dx = 0, 0
+      and g.dy ~= 0
+      and g.dx ~= 0 then
+    g.dy, g.dx = 0, 0
   end
-  return dy, dx
+  return g.dy, g.dx
 end
 -->8
 -- scheduler?
