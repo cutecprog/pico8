@@ -173,14 +173,7 @@ function move_g(ticks)
   end
   -- set to half speed
   if (ticks%2 ~= 0) then
-    dy += approach(p.y, g.y) 
-    dx += approach(p.x, g.x)
-    -- normalize
-    if ticks*70%99 >= 70
-        and dy ~= 0
-        and dx ~= 0 then
-      dy, dx = 0, 0
-    end
+    dy, dx = g_approach(dy,dx,ticks)
   end
   dy = limit(dy)
   dx = limit(dx)
@@ -190,6 +183,18 @@ function move_g(ticks)
     g.y -= dy 
     g.x -= dx
   end
+end
+
+function g_approach(dy,dx,ticks)
+  dy += approach(p.y, g.y) 
+  dx += approach(p.x, g.x)
+  -- normalize
+  if ticks*70%99 >= 70
+      and dy ~= 0
+      and dx ~= 0 then
+    dy, dx = 0, 0
+  end
+  return dy, dx
 end
 -->8
 -- scheduler?
