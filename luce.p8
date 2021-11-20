@@ -200,7 +200,8 @@ function g_approach(ticks)
 end
 -->8
 -- scheduler?
-func_list = {move_p,move_g,check_xo}
+func_list = 
+{move_p,move_g,check_xo}
 fps15 = {false,false,false}
 fps30 = {true,true, false}
 fps60 = {false,false,true}
