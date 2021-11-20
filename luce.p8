@@ -141,7 +141,7 @@ function move_p(ticks)
   end
   p.y += dy
   p.x += dx
-  if (collide_pp(p,g)) then
+  if collide_pp(p,g) then
     p.y -= dy
     p.x -= dx
   end
