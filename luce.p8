@@ -33,6 +33,9 @@ function _draw()
   map(0,0,0,0,8,8)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
+  if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
+  print(abs(g.dy).." "
+        ..abs(g.dx),0,8)
   print(round(stat(1)*100).."%",0,0)
   --print(p.x..", "..p.y..", "..p.f)
   --print(g.x..", "..g.y)
@@ -173,10 +176,10 @@ function move_g(ticks)
     g.dy += 1
     g.dx += 1
   end
-  g.dy = limit(g.dy)
-  g.dx = limit(g.dx)
-  g.y += g.dy
-  g.x += g.dx
+  --g.dy = limit(g.dy)
+  --g.dx = limit(g.dx)
+  g.y += 2--g.dy
+  g.x += 2--g.dx
   if collide_pp(p,g) then
     g.y -= g.dy 
     g.x -= g.dx
@@ -200,7 +203,7 @@ end
 func_list = 
     {move_p,check_xo,
      g_approach,move_g}
-fps15 = {false,false,true,false}
+fps15 = {false,false,false,false}
 fps30 = {true,false,false,true}
 fps60 = {false,true,true,false}
 ticks_15=0
