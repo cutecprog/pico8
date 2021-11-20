@@ -159,23 +159,19 @@ g.dx = 0
 g.mask = {}
 
 function move_g(ticks)
-  g.dy,g.dx=0,0
+  --g.dy,g.dx=0,0
   if ticks%32 < 8 then
-    g.dy = 1
-    g.dx = -1
+    g.dy += 1
+    g.dx += -1
   elseif ticks%32 < 16 then
-    g.dy = -1
-    g.dx = -1
+    g.dy += -1
+    g.dx += -1
   elseif ticks%32 < 24 then
-    g.dy = -1
-    g.dx = 1
+    g.dy += -1
+    g.dx += 1
   else
-    g.dy = 1
-    g.dx = 1
-  end
-  -- set to half speed
-  if (ticks%2 ~= 0) then
-    g.dy, g.dx = g_approach(ticks)
+    g.dy += 1
+    g.dx += 1
   end
   g.dy = limit(g.dy)
   g.dx = limit(g.dx)
@@ -185,26 +181,28 @@ function move_g(ticks)
     g.y -= g.dy 
     g.x -= g.dx
   end
+  g.dy, g.dx = 0,0
 end
 
 function g_approach(ticks)
-  g.dy += approach(p.y, g.y) 
-  g.dx += approach(p.x, g.x)
+  --sfx(0)
+  g.dy = approach(p.y, g.y) 
+  g.dx = approach(p.x, g.x)
   -- normalize
   if ticks*70%99 >= 70
       and g.dy ~= 0
       and g.dx ~= 0 then
     g.dy, g.dx = 0, 0
   end
-  return g.dy, g.dx
 end
 -->8
 -- scheduler?
 func_list = 
-{move_p,move_g,check_xo}
-fps15 = {false,false,false}
-fps30 = {true,true, false}
-fps60 = {false,false,true}
+    {move_p,check_xo,
+     g_approach,move_g}
+fps15 = {false,false,true,false}
+fps30 = {true,false,false,true}
+fps60 = {false,true,true,false}
 ticks_15=0
 ticks_30=0
 ticks_60=0
