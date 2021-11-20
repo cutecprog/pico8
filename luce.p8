@@ -34,8 +34,8 @@ function _draw()
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
   if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
-  print(abs(g.dy).." "
-        ..abs(g.dx),0,8)
+  print(g.dy.." "
+        ..g.dx,0,8)
   print(round(stat(1)*100).."%",0,0)
   --print(p.x..", "..p.y..", "..p.f)
   --print(g.x..", "..g.y)
@@ -163,23 +163,23 @@ g.mask = {}
 
 function move_g(ticks)
   --g.dy,g.dx=0,0
-  if ticks%32 < 8 then
-    g.dy += 1
-    g.dx += -1
-  elseif ticks%32 < 16 then
-    g.dy += -1
-    g.dx += -1
-  elseif ticks%32 < 24 then
-    g.dy += -1
-    g.dx += 1
-  else
-    g.dy += 1
-    g.dx += 1
-  end
-  --g.dy = limit(g.dy)
-  --g.dx = limit(g.dx)
-  g.y += 2--g.dy
-  g.x += 2--g.dx
+--  if ticks%32 < 8 then
+--    g.dy += 1
+--    g.dx += -1
+--  elseif ticks%32 < 16 then
+--    g.dy += -1
+--    g.dx += -1
+--  elseif ticks%32 < 24 then
+--    g.dy += -1
+--    g.dx += 1
+--  else
+--    g.dy += 1
+--    g.dx += 1
+--  end
+  g.dy = 3--limit(g.dy)
+  g.dx = 3--limit(g.dx)
+  g.y += g.dy
+  g.x += g.dx
   if collide_pp(p,g) then
     g.y -= g.dy 
     g.x -= g.dx
