@@ -10,10 +10,10 @@ ticks=0
 function _init()
   add_commit_message()
   cls()
-  a,b,c = 2, .5, -2
-  print(limit(a))
-  print(limit(b))
-  print(limit(c))
+  --a,b,c = 2, .5, -2
+  --print(limit(a))
+  --print(limit(b))
+  --print(limit(c))
   --fps = bunpack(19)
   --for v in all(fps) do
   --  print(v)
