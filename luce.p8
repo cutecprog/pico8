@@ -13,14 +13,14 @@ end
 
 function _update60()
   if ticks_60%4 == 0 then
-    update(fps15, ticks_15)
+    update(15, ticks_15)
     ticks_15 += 1
   end
   if ticks_60%2 == 0 then
-    update(fps30, ticks_30)
+    update(30, ticks_30)
     ticks_30 += 1
   end
-  update(fps60, ticks_60)
+  update(60, ticks_60)
   if (collide_pp(p,g)) sfx(0)
   ticks_60+=1
 end
@@ -97,17 +97,20 @@ p.mask = {}
 
 function check_xo()
   if btn(❎) then
-    fps15[1] = false
-    fps30[1] = false
-    fps60[1] = true
+    func_fps[1] = 60
+    --fps15[1] = false
+    --fps30[1] = false
+    --fps60[1] = true
   elseif btn(🅾️) then
-    fps15[1] = true
-    fps30[1] = false
-    fps60[1] = false
+    func_fps[1] = 15
+    --fps15[1] = true
+    --fps30[1] = false
+    --fps60[1] = false
   else
-    fps15[1] = false
-    fps30[1] = true
-    fps60[1] = false
+    func_fps[1] = 30
+    --fps15[1] = false
+    --fps30[1] = true
+    --fps60[1] = false
   end
 end
 
@@ -201,9 +204,10 @@ end
 func_list = 
     {move_p,check_xo,
      g_approach,move_g}
-fps15 = {false,false,true,false}
-fps30 = {true,false,false,true}
-fps60 = {false,true,false,false}
+func_fps = {30,60,15,30}
+--fps15 = {false,false,true,false}
+--fps30 = {true,false,false,true}
+--fps60 = {false,true,false,false}
 --func_fps = {}
 --func_fps.move_p = 30
 --func_fps.check_x0 = 60
@@ -215,7 +219,7 @@ ticks_60=0
 
 function update(fps, ticks)
   for i=1, #func_list do
-    if (fps[i]) func_list[i](ticks)
+    if (func_fps[i]==fps) func_list[i](ticks)
   end
 end
 -->8
