@@ -198,23 +198,23 @@ function g_approach(ticks)
 end
 -->8
 -- scheduler?
---func_list = 
---    {move_p,check_xo,
---     g_approach,move_g}
+func_list = 
+    {move_p,check_xo,
+     g_approach,move_g}
 --fps15 = {false,false,true,false}
 --fps30 = {true,false,false,true}
 --fps60 = {false,true,false,false}
-fps = {}
-fps.move_p = 30
-fps.check_x0 = 60
-fps.g_approach = 15
-fps.move_g = 30
+func_fps = {}
+func_fps.move_p = 30
+func_fps.check_x0 = 60
+func_fps.g_approach = 15
+func_fps.move_g = 30
 ticks_15=0
 ticks_30=0
 ticks_60=0
 
 function update(fps, ticks)
-  for i=1, all(fps) do
+  for i=1, #func_list do
     if (fps[i]) func_list[i](ticks)
   end
 end
