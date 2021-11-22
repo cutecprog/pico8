@@ -52,6 +52,12 @@ function limit(n)
   return (n>1) and 1 or (n<-1) and -1 or n
 end
 
+function round(n)
+  return (n%1 >= .5) 
+           and ceil(n)
+           or flr(n)
+end
+
 -- > run breadcrumb text
 -- write stat(6) to file to use
 -- as git commit message
@@ -78,12 +84,6 @@ end
 -- after stat(6) is set then
 -- it can't go back to ""
 -- so stat(6) is set t0 "~~~"
-
-function round(n)
-  return (n%1 >= .5) 
-           and ceil(n)
-           or flr(n)
-end
 -->8
 -- player code
 
@@ -169,7 +169,7 @@ function move_g(ticks)
   end
   g.dy = limit(g.dy)
   g.dx = limit(g.dx)
-  if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
+  --if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
   g.y += g.dy
   g.x += g.dx
   if collide_pp(p,g) then
@@ -254,11 +254,11 @@ function collide_pp(a,b)
 		   collide_aabox(p,g)
 		--if (col) sfx(0)
 		-- per-pixel collision
-		if col and intersect_bitmasks(
-		    a,b,x0,y0,y1) then
-		  return true
-		end	
-		return false
+		return col and 
+		    intersect_bitmasks(a,b,
+		                     x0,y0,y1)
+		  and true
+	   or false
 end
 __gfx__
 00000000000000000000000000000000077777700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
