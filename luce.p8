@@ -12,6 +12,9 @@ function _init()
 end
 
 function _update60()
+  if ticks_fps[60]%10 == 0 then
+    p.f = cycle_f(p.f, 2, 2)
+  end
   if ticks_fps[60]%4 == 0 then
     update(15, ticks_fps[15])
     ticks_fps[15] += 1
@@ -21,7 +24,7 @@ function _update60()
     ticks_fps[30] += 1
   end
   update(60, ticks_fps[60])
-  ticks_fps[60]+=1
+  ticks_fps[60] += 1
 end
 
 function _draw()
@@ -118,8 +121,6 @@ function move_p(ticks)
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
-  elseif ticks%4 == 0 then
-    p.f = cycle_f(p.f, 2, 2)
   end
   -- normalize
   if ticks*70%99 >= 70
