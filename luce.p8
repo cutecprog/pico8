@@ -21,21 +21,15 @@ function _update60()
     ticks_fps[30] += 1
   end
   update(60, ticks_fps[60])
-  if (collide_pp(p,g)) sfx(0)
   ticks_fps[60]+=1
 end
 
 function _draw()
   cls()
-  --for i=0,100 do
-    --print(i,20,20)
-  --end
   map(0,0,0,0,8,8)
   spr(p.f,p.x,p.y)
   spr(g.f,g.x,g.y,1,1)
   print(round(stat(1)*100).."%",0,0)
-  --print(p.x..", "..p.y..", "..p.f)
-  --print(g.x..", "..g.y)
 end
 -->8
 -- util function
@@ -153,7 +147,6 @@ g.dx = 0
 g.mask = {}
 
 function move_g(ticks)
-  --g.dy,g.dx=0,0
   if ticks%32 < 8 then
     g.dy += 1
     g.dx += -1
@@ -169,7 +162,6 @@ function move_g(ticks)
   end
   g.dy = limit(g.dy)
   g.dx = limit(g.dx)
-  --if(abs(g.dy) > 1 or abs(g.dx) > 1) sfx(0)
   g.y += g.dy
   g.x += g.dx
   if collide_pp(p,g) then
@@ -180,7 +172,6 @@ function move_g(ticks)
 end
 
 function g_approach(ticks)
-  --sfx(0)
   g.dy = approach(p.y, g.y) 
   g.dx = approach(p.x, g.x)
   -- normalize
@@ -252,7 +243,6 @@ function collide_pp(a,b)
   -- aabox collision
 		local col,a,b,x0,y0,y1=
 		   collide_aabox(p,g)
-		--if (col) sfx(0)
 		-- per-pixel collision
 		return col and 
 		    intersect_bitmasks(a,b,
