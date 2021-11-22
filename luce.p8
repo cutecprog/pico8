@@ -124,13 +124,13 @@ function move_p(ticks)
   if btn(⬆️) then
     p.dy = -1
     eye_dy = -1
+  elseif btn(⬇️) then
+    p.dy = 1
   end
-  if (btn(⬇️)) p.dy = 1
   if btn(⬅️) then
     p.dx = -1
     eye_dx = -1
-  end
-  if btn(➡️) then
+  elseif btn(➡️) then
     p.dx = 1
     eye_dx = 1
   end
