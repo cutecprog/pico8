@@ -93,6 +93,7 @@ p.w = 8
 p.h = 8
 p.dx = 0
 p.dy = 0
+p.bearing= 0
 p.eye_x = p.x
 p.eye_y = p.y
 p.mask = {}
@@ -123,9 +124,11 @@ function move_p(ticks)
   local eye_dy, eye_dx=0,0
   if btn(⬆️) then
     p.dy = -1
+    p.bearing = 0
     eye_dy = -1
   elseif btn(⬇️) then
     p.dy = 1
+    p.bearing = 4
   end
   if btn(⬅️) then
     p.dx = -1
