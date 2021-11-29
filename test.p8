@@ -20,6 +20,7 @@ function _init()
   --end
   --args = {flip,1,2,3}
   --print_args(unpack(args,2))
+  ?fm(12,6,5)
 end
 
 function _update60()
@@ -67,6 +68,14 @@ function bunpack(bitfield)
     bitfield = flr(bitfield>>1)
   end
   return blist
+end
+-->8
+function fm(n, den, num)
+  num = num or 1
+  ?num
+  if (num==1) return n%den==0
+  if (den-num==1) return n%den~=0
+  return n
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
