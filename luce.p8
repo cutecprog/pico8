@@ -143,14 +143,16 @@ function move_p(ticks)
       and dx ~= 0 then
     dy,dx = 0,0
   end
+  p.y += dy
+  p.x += dx
   p.dy = dy
   p.dx = dx
   if collide_pp(p,g) then
+    p.y -= dy
+    p.x -= dx
     p.dy = 0
     p.dx = 0
   end
-  p.y += p.dy
-  p.x += p.dx
 end
 -->8
 -- npc code
