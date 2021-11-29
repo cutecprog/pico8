@@ -122,33 +122,35 @@ function cycle_f(f, s, l)
 end
 
 function move_p(ticks)
-  p.dy,p.dx = 0,0
+  local dy,dx = 0,0
   if btn(⬆️) then
-    p.dy = -1
+    dy = -1
   elseif btn(⬇️) then
-    p.dy = 1
+    dy = 1
   end
   if btn(⬅️) then
-    p.dx = -1
+    dx = -1
   elseif btn(➡️) then
-    p.dx = 1
+    dx = 1
   end
   -- select frame
-  if p.dy == 0 and p.dx == 0 then
+  if dy == 0 and dx == 0 then
     p.f = 1
   end
   -- normalize
   if not fm(ticks,99,70) 
-      and p.dy ~= 0
-      and p.dx ~= 0 then
-    p.dy,p.dx = 0,0
+      and dy ~= 0
+      and dx ~= 0 then
+    dy,dx = 0,0
+  end
+  p.dy = dy
+  p.dx = dx
+  if collide_pp(p,g) then
+    p.dy = 0
+    p.dx = 0
   end
   p.y += p.dy
   p.x += p.dx
-  if collide_pp(p,g) then
-    p.y -= p.dy
-    p.x -= p.dx
-  end
 end
 -->8
 -- npc code
