@@ -38,6 +38,11 @@ end
 -->8
 -- util function
 
+function fm(n, den, num)
+  num = num or 1
+  return n*num%den < num
+end
+
 -- helps b approach a in 1d
 function approach(a,b)
   return (a > b) and 1 
