@@ -147,9 +147,9 @@ function move_p(ticks)
     p.f = 1
   end
   -- normalize
-  if ticks*70%99 >= 70
-      and p.dy ~= 0
-      and p.dx ~= 0 then
+  if ticks*70%99 >= 70 then
+      --and p.dy ~= 0
+      --and p.dx ~= 0 then
     p.dy, p.dx = 0, 0
   end
   p.y += p.dy
