@@ -99,8 +99,6 @@ p.h = 8
 p.dx = 0
 p.dy = 0
 p.bearing= 0
-p.eye_x = p.x
-p.eye_y = p.y
 p.mask = {}
 
 function check_xo()
@@ -124,23 +122,16 @@ function cycle_f(f, s, l)
 end
 
 function move_p(ticks)
-  p.dy,p.dx,p.eye_y,p.eye_x = 
-      0,0,p.y,p.x
-  local eye_dy, eye_dx=0,0
+  p.dy,p.dx = 0,0
   if btn(⬆️) then
     p.dy = -1
-    p.bearing = 0
-    eye_dy = -1
   elseif btn(⬇️) then
     p.dy = 1
-    p.bearing = 4
   end
   if btn(⬅️) then
     p.dx = -1
-    eye_dx = -1
   elseif btn(➡️) then
     p.dx = 1
-    eye_dx = 1
   end
   -- select frame
   if p.dy == 0 and p.dx == 0 then
@@ -158,8 +149,6 @@ function move_p(ticks)
     p.y -= p.dy
     p.x -= p.dx
   end
-  p.eye_y = p.y+eye_dy
-  p.eye_x = p.x+eye_dx
 end
 -->8
 -- npc code
