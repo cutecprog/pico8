@@ -147,7 +147,7 @@ function move_p(ticks)
     p.f = 1
   end
   -- normalize
-  if ticks*70%99 < 70 then
+  if fm(ticks,99,70) then
     p.y += p.dy
     p.x += p.dx
     if collide_pp(p,g) then
@@ -196,13 +196,10 @@ function move_g(ticks)
 end
 
 function g_approach(ticks)
-  g.dy = approach(p.y, g.y) 
-  g.dx = approach(p.x, g.x)
   -- normalize
-  if ticks*70%99 >= 70
-      and g.dy ~= 0
-      and g.dx ~= 0 then
-    g.dy, g.dx = 0, 0
+  if fm(ticks,99,70) then
+     g.dy = approach(p.y, g.y) 
+     g.dx = approach(p.x, g.x)
   end
 end
 -->8
