@@ -34,6 +34,7 @@ function _draw()
   spr(5,p.eye_x,p.eye_y)
   spr(g.f,g.x,g.y,1,1)
   print(round(stat(1)*100).."%",0,0)
+  print(p.aim)
 end
 -->8
 -- util function
@@ -98,8 +99,15 @@ p.w = 8
 p.h = 8
 p.dx = 0
 p.dy = 0
-p.bearing= 0
+p.aim = 0
 p.mask = {}
+
+-- in increments of pi/2
+aim_angle = { 
+    ["n"]=0,["ne"]=1,
+    ["e"]=2,["se"]=3,
+    ["s"]=4,["sw"]=5,
+    ["w"]=6,["nw"]=7 }
 
 function check_xo()
   if btn(❎) then
@@ -122,17 +130,22 @@ function cycle_f(f, s, l)
 end
 
 function move_p(ticks)
-  local dy,dx = 0,0
+  local dy,dx,aim = 0,0,""
   if btn(⬆️) then
     dy = -1
+    aim = "n"
   elseif btn(⬇️) then
     dy = 1
+    aim = "s"
   end
   if btn(⬅️) then
     dx = -1
+    aim = aim.."w"
   elseif btn(➡️) then
     dx = 1
+    aim = aim.."e"
   end
+  p.aim = aim
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
@@ -270,6 +283,10 @@ function collide_pp(a,b)
 		  and true
 	   or false
 end
+-->8
+
+
+
 __gfx__
 00000000000000000000000000000000077777700000000000000bbbbbb000000000000000000000000000000000000000000000000000000000000000000000
 000000000444444004444440044444407607600700000000000bb000000bb0000000000000000000000000000000000000000000000000000000000000000000
