@@ -200,10 +200,13 @@ end
 
 function g_approach(ticks)
   -- normalize
-  if fm(ticks,99,70) then
-     g.dy = approach(p.y, g.y) 
-     g.dx = approach(p.x, g.x)
+  if not fm(ticks,99,70) 
+      and p.dy ~= 0
+      and p.dx ~= 0 then
+    return
   end
+  g.dy = approach(p.y, g.y) 
+  g.dx = approach(p.x, g.x)
 end
 -->8
 -- scheduler?
