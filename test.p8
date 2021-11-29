@@ -24,14 +24,14 @@ function _init()
 end
 
 function _update60()
-  --if (ticks*70%99 < 70) i+=1
-  --j+=1
+  if (fm(ticks,99,70)) i+=1
+  j+=1
   ticks+=1
 end
 
 function _draw()
-  --cls()
-  --print(i/j)
+  cls()
+  print(i/j)
 end
 -->8
 -- util functions
@@ -75,7 +75,7 @@ function fm(n, den, num)
   ?num
   if (num==1) return n%den==0
   if (den-num==1) return n%den~=0
-  return n
+  return n*num%den < num
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
