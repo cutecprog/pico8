@@ -20,18 +20,18 @@ function _init()
   --end
   --args = {flip,1,2,3}
   --print_args(unpack(args,2))
-  ?fm(12,6,5)
+  ?fm(13,12)
 end
 
 function _update60()
-  if (fm(ticks,99,70)) i+=1
+  --if (fm(ticks,99,70)) i+=1
   j+=1
   ticks+=1
 end
 
 function _draw()
-  cls()
-  print(i/j)
+  --cls()
+  --print(i/j)
 end
 -->8
 -- util functions
@@ -72,9 +72,6 @@ end
 -->8
 function fm(n, den, num)
   num = num or 1
-  ?num
-  if (num==1) return n%den==0
-  if (den-num==1) return n%den~=0
   return n*num%den < num
 end
 __gfx__
