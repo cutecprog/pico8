@@ -145,7 +145,7 @@ function move_p(ticks)
     dx = 1
     aim = aim.."e"
   end
-  p.aim = aim
+  p.aim = aim_angle[aim] or p.aim
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
