@@ -147,16 +147,13 @@ function move_p(ticks)
     p.f = 1
   end
   -- normalize
-  if ticks*70%99 >= 70 then
-      --and p.dy ~= 0
-      --and p.dx ~= 0 then
-    p.dy, p.dx = 0, 0
-  end
-  p.y += p.dy
-  p.x += p.dx
-  if collide_pp(p,g) then
-    p.y -= p.dy
-    p.x -= p.dx
+  if ticks*70%99 < 70 then
+    p.y += p.dy
+    p.x += p.dx
+    if collide_pp(p,g) then
+      p.y -= p.dy
+      p.x -= p.dx
+    end
   end
   p.eye_y = p.y+eye_dy
   p.eye_x = p.x+eye_dx
