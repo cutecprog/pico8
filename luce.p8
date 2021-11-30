@@ -117,19 +117,6 @@ function check_xo()
   else
     func_fps[1] = 30
   end
-end
-
-function cycle_f(f, s, l)
-  -- given list with x, y & f
-  -- start frame number,
-  -- length of animation
-  f -= s
-  f = (f+1)%l
-  f += s
-  return f
-end
-
-function move_p(ticks)
   local dy,dx,aim = 0,0,""
   if btn(⬆️) then
     dy = -1
@@ -147,6 +134,21 @@ function move_p(ticks)
   end
   p.aim = aim_angle[aim] 
           or p.aim
+  p.dx,p.dy = dx,dy
+end
+
+function cycle_f(f, s, l)
+  -- given list with x, y & f
+  -- start frame number,
+  -- length of animation
+  f -= s
+  f = (f+1)%l
+  f += s
+  return f
+end
+
+function move_p(ticks)
+  local dy,dx = p.dy,p.dx
   -- select frame
   if dy == 0 and dx == 0 then
     p.f = 1
