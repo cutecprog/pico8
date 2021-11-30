@@ -119,12 +119,15 @@ function check_xo()
   if btn(🅾️) then
     if btnp🅾️ > 8 then
       func_fps[1] = 0
-    elseif btnp🅾️ <= 1 then
-      sfx(0)
+    --elseif btnp🅾️ == 0 then
+      --sfx(0)
     end
     btnp🅾️ += 1
   else
-    btnp🅾️ = 0
+    if btnp🅾️ > 0 then
+      sfx(0)
+      btnp🅾️ = 0
+    end
   end
   local dy,dx,aim = 0,0,""
   if btn(⬆️) then
