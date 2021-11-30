@@ -113,7 +113,7 @@ function check_xo()
   if btn(❎) then
     func_fps[1] = 60
   elseif btn(🅾️) then
-    func_fps[1] = 15
+    func_fps[1] = 0
   else
     func_fps[1] = 30
   end
