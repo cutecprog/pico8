@@ -109,13 +109,22 @@ aim_angle = {
     ["s"]=4,["sw"]=5,
     ["w"]=6,["nw"]=7 }
 
+btnp🅾️ = 0  -- global
 function check_xo()
   if btn(❎) then
     func_fps[1] = 60
-  elseif btn(🅾️) then
-    func_fps[1] = 0
   else
     func_fps[1] = 30
+  end
+  if btn(🅾️) then
+    if btnp🅾️ > 8 then
+      func_fps[1] = 0
+    elseif btnp🅾️ <= 1 then
+      sfx(0)
+    end
+    btnp🅾️ += 1
+  else
+    btnp🅾️ = 0
   end
   local dy,dx,aim = 0,0,""
   if btn(⬆️) then
