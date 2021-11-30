@@ -132,9 +132,8 @@ function check_xo()
     dx = 1
     aim = aim.."e"
   end
-  p.aim = aim_angle[aim] 
-          or p.aim
-  p.dx,p.dy = dx,dy
+  p.dx,p.dy,p.aim = dx,dy,
+      aim_angle[aim] or p.aim
 end
 
 function cycle_f(f, s, l)
