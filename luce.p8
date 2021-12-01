@@ -12,6 +12,10 @@ function _init()
 end
 
 function _update60()
+  if ticks_fps[60]%60 == 0 then
+    update(1, ticks_fps[15])
+    ticks_fps[1] += 1
+  end
   if ticks_fps[60]%10 == 0 then
     p.f = cycle_f(p.f, 2, 2)
   end
@@ -122,7 +126,7 @@ function check_xo()
   end
   if btn(🅾️) then
     if btnp🅾️ > 8 then
-      func_fps[1] = 0
+      func_fps[1] = 1
     end
     btnp🅾️ += 1
   else
@@ -238,6 +242,7 @@ func_list =
      g_approach,move_g}
 func_fps = {30,60,15,30}
 ticks_fps = {}
+ticks_fps[1] =0
 ticks_fps[15]=0
 ticks_fps[30]=0
 ticks_fps[60]=0
