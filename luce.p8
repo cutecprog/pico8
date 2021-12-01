@@ -136,7 +136,8 @@ function check_xo()
       btnp🅾️ = 0
     end
   end
-  local dy,dx,aim = 0,0,""
+  -- dpad movement
+  local dy,dx,aim = p.dy,p.dy,""
   if btn(⬆️) then
     dy = -1
     aim = "n"
@@ -179,14 +180,14 @@ function move_p(ticks)
   end
   p.y += dy
   p.x += dx
-  p.dy = dy
-  p.dx = dx
+  --p.dy = dy
+  --p.dx = dx
   if collide_pp(p,g) then
     p.y -= dy
     p.x -= dx
-    p.dy = 0
-    p.dx = 0
   end
+  p.dy = 0
+  p.dx = 0
 end
 -->8
 -- npc code
