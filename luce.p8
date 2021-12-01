@@ -32,7 +32,8 @@ function _draw()
   map(0,0,0,0,8,8)
   spr(p.f,p.x,p.y)
   spr(5,p.x,p.y) -- eyes
-  spr(9,p.x,p.y) -- backpack
+  if (p.strike) spr(8,p.x,p.y)
+  --spr(9,p.x,p.y) -- backpack
   spr(g.f,g.x,g.y,1,1)
   print(round(stat(1)*100).."%",0,0)
   print(p.aim)
@@ -101,6 +102,7 @@ p.h = 8
 p.dx = 0
 p.dy = 0
 p.aim = 0
+p.strike = false
 p.mask = {}
 
 -- in increments of pi/2
@@ -112,6 +114,7 @@ aim_angle = {
 
 btnp🅾️ = 0  -- global
 function check_xo()
+  p.strike = false
   if btn(❎) then
     func_fps[1] = 60
   else
@@ -120,13 +123,12 @@ function check_xo()
   if btn(🅾️) then
     if btnp🅾️ > 8 then
       func_fps[1] = 0
-    --elseif btnp🅾️ == 0 then
-      --sfx(0)
     end
     btnp🅾️ += 1
   else
     if btnp🅾️ > 0 then
       sfx(0)
+      p.strike = true
       btnp🅾️ = 0
     end
   end
